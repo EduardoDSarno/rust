@@ -2,7 +2,7 @@ fn main() {
     // TODO: Create an array called `a` with at least 100 elements in it.
     // let a = ???
 
-    let mut a:[i32; 100] = [0;100];
+    let a:[i32; 100] = [0;100];
 
     if a.len() >= 100 {
         println!("Wow, that's a big array!");

@@ -19,18 +19,48 @@ fn build_scores_table(results: &str) -> HashMap<&str, TeamScores> {
     // The name of the team is the key and its associated struct is the value.
     let mut scores = HashMap::<&str, TeamScores>::new();
 
-    for line in results.lines() {
+    for line in results.lines() 
+    {
         let mut split_iterator = line.split(',');
         // NOTE: We use `unwrap` because we didn't deal with error handling yet.
         let team_1_name = split_iterator.next().unwrap();
         let team_2_name = split_iterator.next().unwrap();
-        let team_1_score: u8 = split_iterator.next().unwrap().parse().unwrap();
-        let team_2_score: u8 = split_iterator.next().unwrap().parse().unwrap();
-
+        let team_1_score: u8  = split_iterator.next().unwrap().parse().unwrap();
+        let team_2_score: u8  = split_iterator.next().unwrap().parse().unwrap();
+        
         // TODO: Populate the scores table with the extracted details.
         // Keep in mind that goals scored by team 1 will be the number of goals
         // conceded by team 2. Similarly, goals scored by team 2 will be the
         // number of goals conceded by team 1.
+
+
+        if scores.contains_key(team_1_name) 
+        {
+            // modify existing
+            let team = scores.get_mut(team_1_name).unwrap();
+            team.goals_scored += team_1_score;
+            team.goals_conceded += team_2_score;  // Add this line
+        } 
+        else 
+        {
+            // insert new
+            scores.insert(team_1_name, TeamScores { goals_scored: team_1_score, goals_conceded: team_2_score });
+        }
+
+        if scores.contains_key(team_2_name) 
+        {
+            // modify existing
+            let team = scores.get_mut(team_2_name).unwrap();
+            team.goals_scored += team_2_score;  // Fix: was team_2_name
+            team.goals_conceded += team_1_score;  // Add this line
+        } 
+        else 
+        {
+            // insert new
+            scores.insert(team_2_name, TeamScores { goals_scored: team_2_score, goals_conceded: team_1_score});
+        }
+        
+
     }
 
     scores
