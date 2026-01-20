@@ -1,0 +1,11 @@
+/Users/eduardosarno/Documents/Code/Rust/solana_style_contract/target/debug/deps/digest-74b47290229da545.d: /Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/lib.rs /Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/digest.rs /Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/dyn_digest.rs /Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/errors.rs /Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/fixed.rs /Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/variable.rs /Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/xof.rs
+
+/Users/eduardosarno/Documents/Code/Rust/solana_style_contract/target/debug/deps/libdigest-74b47290229da545.rmeta: /Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/lib.rs /Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/digest.rs /Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/dyn_digest.rs /Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/errors.rs /Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/fixed.rs /Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/variable.rs /Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/xof.rs
+
+/Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/lib.rs:
+/Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/digest.rs:
+/Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/dyn_digest.rs:
+/Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/errors.rs:
+/Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/fixed.rs:
+/Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/variable.rs:
+/Users/eduardosarno/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.9.0/src/xof.rs:
