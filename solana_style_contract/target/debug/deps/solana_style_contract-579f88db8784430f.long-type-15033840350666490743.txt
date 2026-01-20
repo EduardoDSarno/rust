@@ -1,0 +1,1 @@
+for<'a, 'b> fn(&'a [AccountInfo<'a>], &'b Pubkey) -> Result<(), ProgramError> {instructions_logic::initialize}

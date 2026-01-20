@@ -1,66 +1,33 @@
 use borsh::{BorshSerialize, BorshDeserialize};
+use super::state::State;
 use solana_program::{
-    account_info::{AccountInfo, next_account_info},
-    entrypoint::ProgramResult,
-    pubkey::Pubkey,
+    account_info::{AccountInfo, next_account_info}, entrypoint::ProgramResult, program_error::ProgramError, pubkey::Pubkey
 };
 
-#[derive(BorshSerialize, BorshDeserialize)]
-pub struct State {
-    pub is_initialized: bool,
-    pub authority: Pubkey,
-}
+use crate::program::instructions::verificaiton::verify;
 
-impl State {
-    pub const LEN: usize = 33; // 1 + 32
-}
+
+
 
 // Handler functions
-pub fn initialize(accounts: &[AccountInfo], program_id: &Pubkey) -> ProgramResult 
+pub fn initialize<'a>(accounts: &'a [AccountInfo<'a>], program_id: &Pubkey) -> ProgramResult 
 {
+    // using verified to make code clean and simpler
+    let verified = verify(accounts, program_id)?;
 
-    let accounts_iter = &mut accounts.iter();
-
-    let signer = next_account_info(accounts_iter)?; // first account 
-    let state = next_account_info(accounts_iter)?; // second account (iterate over it)
-    let token_program = next_account_info(accounts_iter)?; // third account toke nprogram
-    
-    // check if the transaction was signed by the account public key using is signer built in method
-    if !signer.is_signer {
-        return Err(solana_program::program_error::ProgramError::MissingRequiredSignature);
+    if verified.state_data.is_initialized{
+        return Err(ProgramError::AccountAlreadyInitialized);
     }
 
-    //only owner of the program is allowed to modify that accounts data
-    if state.owner != program_id {
-        return Err(solana_program::program_error::ProgramError::IncorrectProgramId);
-    }
-
-    // account must be writable
-    if !state.is_writable {
-        return Err(solana_program::program_error::ProgramError::InvalidAccountData);
-    }
-
-    // must verify account data size
-    if state.data_len() != State::LEN {
-        return Err(solana_program::program_error::ProgramError::InvalidAccountData);
-    }
-
-
-    // create a initliazed state data
-    let mut state_data = State {
+    // Create new initialized state
+    let new_state = State {
         is_initialized: true,
-        authority: *signer.key,
+        authority: *verified.signer.key,
     };
     
-        
-    // Check if it is already inilizatizled
-    let existing_data = State::try_from_slice(&state.data.borrow())?;
-
-    if existing_data.is_initialized {
-        return Err(solana_program::program_error::ProgramError::AccountAlreadyInitialized);
-    }
-    state_data.serialize(&mut &mut state.data.borrow_mut()[..])?; // this means “Take my Rust struct and write its bytes into the account.”
-
+    // Serialize to account
+    new_state.serialize(&mut &mut verified.state_account.data.borrow_mut()[..])?;
+    
     Ok(())
 }
 
