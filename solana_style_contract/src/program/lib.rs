@@ -40,9 +40,9 @@ pub fn process_instruction<'a>(
     match instruction 
     {
         ProgramInstruction::Initialize => initialize(accounts, program_id),
-        ProgramInstruction::Add => add(accounts),
-        ProgramInstruction::Subtract => subtract(accounts),
-        ProgramInstruction::Approve => approve(accounts),
+        ProgramInstruction::Add { amount } => add(accounts, program_id, amount),
+        ProgramInstruction::Subtract { amount } => subtract(accounts, program_id, amount),
+        ProgramInstruction::Approve => approve(accounts, program_id),
     }
 }
 

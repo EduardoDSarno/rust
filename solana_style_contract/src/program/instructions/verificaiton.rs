@@ -1,7 +1,7 @@
 use solana_program::{
-    account_info::{AccountInfo, next_account_info}, entrypoint::ProgramResult, program_error::ProgramError, pubkey::Pubkey
+    account_info::{AccountInfo, next_account_info}, program_error::ProgramError, pubkey::Pubkey
 };
-use borsh::{BorshSerialize, BorshDeserialize};
+use borsh::BorshDeserialize;
 use super::state::State;
 
 
